@@ -35,10 +35,13 @@ class SimpleCamera {
 	// checks to make sure the device has a flash,
 	// displays an AlertDialog and quit the app if not
 	private void _checkIfCameraHasFlash(){
+
+		// Checks to see if the device has a camera flash (flash light)
 		boolean hasFlash = _main.getApplicationContext()
 				.getPackageManager()
 				.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
+		// if it hasn't, show an AlertDialog
 		if(!hasFlash){
 			AlertDialog alertDialog = new AlertDialog.Builder(_main).create();
 			alertDialog.setTitle("Error");
