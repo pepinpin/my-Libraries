@@ -9,8 +9,21 @@ The whole point of this is to be able to easily activate/deactivate the logs
 
 when moving to production/release : just change the boolean IS_ACTIVATED
 
-<br>
+Only static methods
 
+> Exemples : 
+>> L.m("test message") --> default message
+
+>> L.t(context, "test message") --> default toast
+
+>> L.w("simple warning message") --> a warning message
+
+>> L.debug(TAG, "simple debug message with a tag") --> a debug message with a tag (just like the normal Log.d method)
+
+>> L.red("simple message in RED") --> a simple message written in red
+
+
+<br>
 ## GetJSON
 Android class that handles retrieving and parsing JSON
 
@@ -25,3 +38,23 @@ Can return a plain JSONObject or a HashMap\<String,String>
 				
 >> JSONObject result = new GetJSON()
 				.getJSONobjectFromAssets(activity, "some_file.json")
+				
+<br>
+## SimpleCamera
+Android Class to easily get a camera object and
+use the Flashlight
+
+
+> Exemples : 
+>> 
+>> SimpleCamera camera = new mCamera(_main);
+
+>> FlashLight flashLight = camera.new FlashLight();
+
+>> camera.initCamera();
+
+>> flashLight.lightOn();
+
+>> flashLight.lightOff();
+
+>>camera.releaseCamera();
