@@ -3,7 +3,7 @@ homemade Android/Java Libraries
 
 
 ## L.java
-Android class to "better" handle the console / monitor logs in Android Studio
+Android class to "better" handle the console / monitor logs and Toast in Android Studio
 
 The whole point of this is to be able to easily activate/deactivate the logs 
 
