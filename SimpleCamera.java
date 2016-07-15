@@ -52,8 +52,6 @@ class SimpleCamera {
 			});
 
 			alertDialog.show();
-
-			_main.getTtmFragment().cancelSending();
 		}
 	}
 
