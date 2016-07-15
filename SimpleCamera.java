@@ -59,13 +59,22 @@ class SimpleCamera {
 
 	// get the camera device and the parameters
 	private void _getCamera(){
+
+		// if the camera is not already opened
 		if (_camera == null){
 			try {
+				// open it
 				_camera = Camera.open();
 			}catch (RuntimeException e){
 				e.printStackTrace();
 				L.e(TAG, "Camera Error : Couldn't get the camera, it may be used by another app !");
 				L.e(TAG, "Camera Error : " + e.getMessage());
+			}finally {
+				// 2nd test to check if the camera has been open properly
+				// if not, display a Toast
+				if (_camera == null){
+					Toast.makeText(_main, "Camera Error : Couldn't get the camera, it may be used by another app !", Toast.LENGTH_LONG).show();
+				}
 			}
 		}
 	}
@@ -90,7 +99,7 @@ class SimpleCamera {
 		}
 	}
 
-	// inner class representing just the light torch
+	// inner class representing just the flash light
 	class FlashLight{
 
 		// turn the light ON
