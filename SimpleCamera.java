@@ -67,8 +67,8 @@ class SimpleCamera {
 				_camera = Camera.open();
 			}catch (RuntimeException e){
 				e.printStackTrace();
-				L.e(TAG, "Camera Error : Couldn't get the camera, it may be used by another app !");
-				L.e(TAG, "Camera Error : " + e.getMessage());
+				Log.e(TAG, "Camera Error : Couldn't get the camera, it may be used by another app !");
+				Log.e(TAG, "Camera Error : " + e.getMessage());
 			}finally {
 				// 2nd test to check if the camera has been open properly
 				// if not, display a Toast
