@@ -13,7 +13,7 @@ when moving to production/release : just change the boolean IS_ACTIVATED
 
 Only static methods
 
-> Exemple : 
+> Exemples : 
 >> L.m("test message") --> default message
 
 >> L.t(context, "test message") --> default toast
