@@ -15,22 +15,18 @@ public class GetJSON {
 
 	private void getObjectFromAssets(Activity activity, String fileName){
 
-		String json = "";
 		try {
 			InputStream is = activity.getAssets().open(fileName);
 			int size = is.available();
 			byte[] buffer = new byte[size];
 			is.read(buffer);
 			is.close();
-			json = new String(buffer, "UTF-8");
-		} catch (IOException ex) {
+			String json = new String(buffer, "UTF-8");
+			
+			_resultJSONobject = new JSONObject(json);
+			
+		} catch (IOException | JSONException ex) {
 			ex.printStackTrace();
-		}
-
-		try {
-		_resultJSONobject = new JSONObject(json);
-		} catch (JSONException e) {
-			e.printStackTrace();
 		}
 	}
 
