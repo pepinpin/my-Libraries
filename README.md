@@ -12,9 +12,11 @@ when moving to production/release : just change the boolean IS_ACTIVATED
 Only static methods
 
 > Exemples : 
->> L.m("test message") --> default message
+>> L.m("test message") --> default message (in console)
 
->> L.t(context, "test message") --> default toast
+>> L.s(view, "test message") --> default SnackBar
+
+>> L.t(context, "test message") --> default Toast
 
 >> L.w("simple warning message") --> a warning message
 
