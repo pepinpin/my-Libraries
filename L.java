@@ -1,12 +1,13 @@
+package net.biospherecorp.umorse;
+
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 // The whole point of this tool is to be able
 // to deactivate the logs when in production
-// and having the ability to define a log message
-// by colors or functions
-//
 public abstract class L{
 
 
@@ -30,7 +31,21 @@ public abstract class L{
 		}
 	}
 
-	// DEFAULT TOAST
+	// DEFAULT SNACKBAR
+	static void s(View view, String message){
+		if (IS_ACTIVATED) {
+			Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
+		}
+	}
+
+	// DEFAULT SNACKBAR (with TAG)
+	static void s(View view, String TAG, String message){
+		if (IS_ACTIVATED) {
+			Snackbar.make(view, TAG + message, Snackbar.LENGTH_LONG).show();
+		}
+	}
+
+	// DEFAULT TOAST--
 	static void t(Context context, String message){
 
 		if (IS_ACTIVATED) {
@@ -46,13 +61,13 @@ public abstract class L{
 		// do nothing with context
 		m(message);
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	// BY COLORS
-	
+
 
 	// GREEN
 	static void green (String message){
@@ -60,7 +75,7 @@ public abstract class L{
 			Log.i(">>> ", message);
 		}
 	}
-	
+
 	// GREEN
 	static void green (String TAG, String message){
 		if (IS_ACTIVATED) {
@@ -116,8 +131,8 @@ public abstract class L{
 
 
 
-	
-	
+
+
 	// BY FUNCTION (long version)
 
 
@@ -195,14 +210,14 @@ public abstract class L{
 			Log.d(">> Debug msg >> ", TAG + " : " + message);
 		}
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	// BY FUNCTION (short version)
-	
-	
+
+
 	// INFO
 	//
 	// color green in Android Studio console/monitor
