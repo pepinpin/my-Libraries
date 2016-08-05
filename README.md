@@ -49,7 +49,7 @@ use the Flashlight
 
 > Exemples : 
 >> 
->> SimpleCamera camera = new mCamera(_main);
+>> SimpleCamera camera = new SimpleCamera(context);
 
 >> FlashLight flashLight = camera.new FlashLight();
 
