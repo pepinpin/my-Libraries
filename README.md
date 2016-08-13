@@ -34,12 +34,19 @@ Android class that handles retrieving and parsing JSON
 Can return a plain JSONObject or a HashMap\<String,String>
 
 
-> Exemples : 
->> HashMap\<String,String> result = new GetJSON()
-				.getHashMapFromAssets(activity, "some_file.json")
-				
+> Exemples with a file : 
 >> JSONObject result = new GetJSON()
-				.getJSONobjectFromAssets(activity, "some_file.json")
+				.getJSONObjectFromAssets(activity, "some_file.json");
+				
+>> HashMap\<String,String> result = new GetJSON()
+				.getHashMapFromAssets(activity, "some_file.json");
+				
+> Exemples with an url : 
+>> JSONObject result = new GetJSON()
+				.getJSONObjectFromUrl("http://some_url.net");
+				
+>> HashMap\<String,String> result = new GetJSON()
+				.getHashMapFromUrl(activity, "http://some_url.net");
 				
 <br>
 ## SimpleCamera
