@@ -1,3 +1,5 @@
+package net.biospherecorp.umorse;
+
 import android.app.Activity;
 import android.widget.Toast;
 
@@ -7,11 +9,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-class GetJSON {
+public class GetJSON {
 
 	private JSONObject _resultJSONobject;
 	private Map<String, String> _resultHashMap = new HashMap<>();
@@ -20,7 +23,7 @@ class GetJSON {
 	private static final int TRY_MAX_COUNT = 10;
 
 
-	private void getObjectFromAssets(Activity activity, String fileName){
+	private void _getObjectFromAssets(Activity activity, String fileName){
 
 		try {
 			InputStream is = activity.getAssets().open(fileName);
@@ -31,19 +34,21 @@ class GetJSON {
 			ex.printStackTrace();
 		}
 	}
+	
+	private void _getObjectFromUrl(String url){
+		
+		try {
+			InputStream is = new URL(url).openStream();
+			String json = IOUtils.toString(is);
+			_resultJSONobject = new JSONObject(json);
 
-	Map<String, String> getHashMapFromAssets(Activity activity, String fileName) {
-
-		// to handle the possibility of some problems accessing the JSON file
-		// we try x times to get the file and display a toast if it fails
-
-		while(tryCounter <= TRY_MAX_COUNT
-				&& _resultJSONobject == null){
-
-			tryCounter++;
-			getObjectFromAssets(activity, fileName);
+		} catch (IOException | JSONException ex) {
+			ex.printStackTrace();
 		}
-
+	}
+	
+	private Map<String, String> _returnHashMap(Activity activity){
+		
 		if (_resultJSONobject != null){
 
 			Iterator<String> keys = _resultJSONobject.keys();
@@ -63,8 +68,44 @@ class GetJSON {
 		}else{
 			Toast.makeText(activity, R.string.error_no_json_toast, Toast.LENGTH_SHORT).show();
 		}
+		
+		return _resultHashMap;
+	}
+
+	public Map<String, String> getHashMapFromAssets(Activity activity, String fileName) {
+
+		// to handle the possibility of some problems accessing the JSON file
+		// we try x times to get the file and display a toast if it fails
 
 		tryCounter = 0;
-		return _resultHashMap;
+		
+		while(tryCounter <= TRY_MAX_COUNT
+				&& _resultJSONobject == null){
+
+			tryCounter++;
+			_getObjectFromAssets(activity, fileName);
+		}
+
+		return _returnHashMap(activity);
+	}
+	
+	
+	// Not tested yet !!
+	//
+	public Map<String, String> getHashMapFromUrl(Activity activity, String url) {
+
+		// to handle the possibility of some problems accessing the JSON file
+		// we try x times to get the file and display a toast if it fails
+
+		tryCounter = 0;
+		
+		while(tryCounter <= TRY_MAX_COUNT
+				&& _resultJSONobject == null){
+
+			tryCounter++;
+			_getObjectFromUrl(url);
+		}
+
+		return _returnHashMap(activity);
 	}
 }
