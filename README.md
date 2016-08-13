@@ -29,7 +29,7 @@ Only static methods
 ## GetJSON
 Android class that handles retrieving and parsing JSON
 
- from a file  in the Assets folder (and soon from http)
+ from a file  in the Assets folder or from an url (http://...)
 
 Can return a plain JSONObject or a HashMap\<String,String>
 
