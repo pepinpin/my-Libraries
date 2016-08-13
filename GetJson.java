@@ -35,7 +35,7 @@ public class GetJSON {
 		return _resultJSONObject;
 	}
 
-	public void getJSONObjectFromUrl(String url){
+	public JSONObject getJSONObjectFromUrl(String url){
 
 		try {
 			InputStream is = new URL(url).openStream();
@@ -45,6 +45,8 @@ public class GetJSON {
 		} catch (IOException | JSONException ex) {
 			ex.printStackTrace();
 		}
+
+		return _resultJSONObject;
 	}
 
 	private Map<String, String> _returnHashMap(Activity activity){
